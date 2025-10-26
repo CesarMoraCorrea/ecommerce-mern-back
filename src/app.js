@@ -14,6 +14,10 @@ app.use(cors({ origin: allowedOrigin, credentials: true }));
 app.use(morgan('dev'));
 app.use(express.json());
 
+app.get('/', (req, res) => {
+  res.status(200).json({ ok: true, health: '/api/health' });
+});
+
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', service: 'ecommerce-mern-api' });
 });
